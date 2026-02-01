@@ -1,4 +1,4 @@
-module github.com/kubestellar/ks-demo/integrations/argocd
+module github.com/kubestellar/kss-demo/integrations/argocd
 
 go 1.21
 

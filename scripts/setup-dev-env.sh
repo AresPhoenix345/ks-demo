@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# setup-dev-env.sh — Create a minimal dev environment for ks-demo (Kind + KubeStellar placeholder)
+# setup-dev-env.sh — Create a minimal dev environment for kss-demo (Kind + KubeStellar placeholder)
 set -euo pipefail
 
 echo "KubeStellar Integrations Demo — Dev environment setup"

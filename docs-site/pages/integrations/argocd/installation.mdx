@@ -10,8 +10,8 @@
 ## Method 1: kubectl
 
 ```bash
-# From ks-demo repo root
-cd ks-demo
+# From kss-demo repo root
+cd kss-demo
 
 # Install CRDs
 kubectl apply -f integrations/argocd/config/crd/bases/
@@ -26,7 +26,7 @@ kubectl apply -f integrations/argocd/deploy/kustomize/
 ## Method 2: Helm (when chart is available)
 
 ```bash
-helm repo add kubestellar-integrations https://kubestellar.github.io/ks-demo/charts
+helm repo add kubestellar-integrations https://kubestellar.github.io/kss-demo/charts
 helm install argocd-integration kubestellar-integrations/kubestellar-argocd
 ```
 

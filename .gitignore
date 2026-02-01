@@ -1,5 +1,25 @@
+# Dependencies and build
 node_modules/
 .next/
 dist/
 build/
+vendor/
+
+# Environment and secrets
 .env
+.env.local
+.env.*.local
+
+# Go
+bin/
+*.exe
+*.test
+coverage.out
+# go.sum is committed for reproducible builds
+
+# IDE and OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db

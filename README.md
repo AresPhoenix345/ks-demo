@@ -31,8 +31,8 @@ bash <(curl -s https://raw.githubusercontent.com/kubestellar/kubestellar/main/sc
 ### Install Integrations
 
 ```bash
-git clone https://github.com/kubestellar/ks-demo.git
-cd ks-demo
+git clone https://github.com/kubestellar/kss-demo.git
+cd kss-demo
 ./scripts/install-integrations.sh
 ```
 
@@ -58,7 +58,7 @@ Full documentation is available in the docs-site (and when deployed at the Netli
 ## Project Structure
 
 ```
-ks-demo/
+kss-demo/
 ├── integrations/        # Integration implementations (ArgoCD, Terraform)
 ├── docs-site/           # Nextra documentation website (Netlify-deployable)
 ├── examples/            # Sample configurations

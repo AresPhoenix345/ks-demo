@@ -2,7 +2,7 @@
 
 **LFX Mentorship Project**: CNCF - KubeStellar: Integration and ecosystem development specialist (2026 Term 1)
 
-This document summarizes the analysis of the two source repositories used to build the ks-demo prototype.
+This document summarizes the analysis of the two source repositories used to build the kss-demo prototype.
 
 ---
 
@@ -59,7 +59,7 @@ This document summarizes the analysis of the two source repositories used to bui
 2. **Binding status** – Controllers can watch Bindings/CombinedStatus for sync/health to feed into GitOps or dashboards.
 3. **WDS as source of truth** – Workloads in WDS are what get propagated; integrations can create/update WDS objects and BindingPolicies.
 4. **OCM cluster inventory** – Cluster identity and labels come from OCM; integrations can assume ManagedCluster CRs and labels.
-5. **No dedicated “integrations” or “plugins” directory** – Integration code would live in a separate repo (e.g. ks-demo) and depend on this repo’s API and client types.
+5. **No dedicated “integrations” or “plugins” directory** – Integration code would live in a separate repo (e.g. kss-demo) and depend on this repo’s API and client types.
 
 ### Code Patterns
 
@@ -142,13 +142,13 @@ Additional: `framer-motion`, `lucide-react`, `mermaid`, `@theguild/remark-mermai
 
 ---
 
-## Recommendations for Prototype (ks-demo)
+## Recommendations for Prototype (kss-demo)
 
 1. **Two integrations**
    - **Primary: ArgoCD** – High demand, clear mapping (BindingPolicy → Applications per cluster/destination).
    - **Secondary: Terraform** – IaC story; Terraform resource/data source for BindingPolicy (and optionally cluster list).
 
-2. **Standalone repo (ks-demo)**
+2. **Standalone repo (kss-demo)**
    - Own Go modules under `integrations/argocd/` and `integrations/terraform/`; depend on `github.com/kubestellar/kubestellar` for API types and clients (or copy minimal types if needed for portability).
    - Docs site in `docs-site/` – Nextra + Next.js, simplified compared to full ks-docs (single project, no multi-version), deployable to Netlify.
 

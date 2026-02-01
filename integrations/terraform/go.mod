@@ -1,4 +1,4 @@
-module github.com/kubestellar/ks-demo/integrations/terraform
+module github.com/kubestellar/kss-demo/integrations/terraform
 
 go 1.21
 

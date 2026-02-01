@@ -8,7 +8,7 @@ package main
 
 import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/plugin"
-	"github.com/kubestellar/ks-demo/integrations/terraform/internal/provider"
+	"github.com/kubestellar/kss-demo/integrations/terraform/internal/provider"
 )
 
 func main() {

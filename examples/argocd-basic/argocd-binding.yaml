@@ -10,7 +10,7 @@ spec:
   applicationTemplate:
     project: default
     source:
-      repoURL: https://github.com/kubestellar/ks-demo
+      repoURL: https://github.com/kubestellar/kss-demo
       path: examples/argocd-basic
       targetRevision: main
     destination:

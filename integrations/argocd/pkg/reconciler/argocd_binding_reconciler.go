@@ -23,7 +23,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/log"
 
-	integrationv1alpha1 "github.com/kubestellar/ks-demo/integrations/argocd/api/v1alpha1"
+	integrationv1alpha1 "github.com/kubestellar/kss-demo/integrations/argocd/api/v1alpha1"
 )
 
 // ArgoCDBindingReconciler reconciles ArgoCDBinding resources by creating/updating

@@ -2,7 +2,7 @@
 
 **LFX Mentorship Project**: CNCF - KubeStellar: Integration and ecosystem development specialist (2026 Term 1)
 
-This document outlines the implementation plan for two production-ready integrations and the standalone ks-demo project deployable on Netlify.
+This document outlines the implementation plan for two production-ready integrations and the standalone kss-demo project deployable on Netlify.
 
 ---
 
@@ -25,7 +25,7 @@ This document outlines the implementation plan for two production-ready integrat
                                 │
                                 ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│  ArgoCD Integration Controller (ks-demo)                          │
+│  ArgoCD Integration Controller (kss-demo)                          │
 │  - Watches ArgoCDBinding CR                                      │
 │  - Reads BindingPolicy / Binding from KubeStellar API             │
 │  - For each destination: create/update Argo CD Application       │
@@ -120,7 +120,7 @@ integrations/argocd/
                                 │
                                 ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│  Terraform Provider (ks-demo)                                     │
+│  Terraform Provider (kss-demo)                                     │
 │  - CRUD for BindingPolicy via KubeStellar API                     │
 │  - Read cluster list from OCM or KubeStellar context              │
 └───────────────────────────────┬─────────────────────────────────┘
@@ -189,7 +189,7 @@ integrations/terraform/
 
 ## Documentation Strategy
 
-- **Single docs site** in `ks-demo/docs-site/` (Nextra), deployable on Netlify.
+- **Single docs site** in `kss-demo/docs-site/` (Nextra), deployable on Netlify.
 - **Sections**: Getting Started, Integrations (ArgoCD, Terraform), API Reference (high-level), Examples, Community.
 - **Per integration**: Installation, User Guide, Architecture, Troubleshooting, Examples (links to `examples/` in repo).
 
@@ -205,10 +205,10 @@ integrations/terraform/
 
 ---
 
-## ks-demo Repository Layout (Summary)
+## kss-demo Repository Layout (Summary)
 
 ```
-ks-demo/
+kss-demo/
 ├── README.md
 ├── SETUP.md
 ├── DEPLOYMENT.md

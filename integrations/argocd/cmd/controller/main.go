@@ -26,8 +26,8 @@ import (
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
-	integrationv1alpha1 "github.com/kubestellar/ks-demo/integrations/argocd/api/v1alpha1"
-	"github.com/kubestellar/ks-demo/integrations/argocd/pkg/reconciler"
+	integrationv1alpha1 "github.com/kubestellar/kss-demo/integrations/argocd/api/v1alpha1"
+	"github.com/kubestellar/kss-demo/integrations/argocd/pkg/reconciler"
 )
 
 var scheme = runtime.NewScheme()

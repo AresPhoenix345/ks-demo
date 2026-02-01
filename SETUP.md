@@ -23,8 +23,8 @@
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/kubestellar/ks-demo.git
-cd ks-demo
+git clone https://github.com/kubestellar/kss-demo.git
+cd kss-demo
 ```
 
 ### Set Up Development Environment
@@ -41,6 +41,7 @@ This script can create Kind clusters, install KubeStellar, and prepare the envir
 
 ```bash
 cd integrations/argocd
+go mod tidy     # generate go.sum if missing
 go mod download
 make generate   # if codegen is configured
 make build
@@ -51,6 +52,7 @@ make test
 
 ```bash
 cd integrations/terraform
+go mod tidy     # generate go.sum if missing
 go mod download
 make build
 make test

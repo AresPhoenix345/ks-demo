@@ -1,6 +1,6 @@
 # Validation Checklist
 
-Use this checklist to validate the ks-demo project before release or submission.
+Use this checklist to validate the kss-demo project before release or submission.
 
 ## Code Quality
 
