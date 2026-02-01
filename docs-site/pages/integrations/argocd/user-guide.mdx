@@ -1,0 +1,52 @@
+# ArgoCD Integration — User Guide
+
+## Concepts
+
+- **ArgoCDBinding** — Custom resource that references a KubeStellar BindingPolicy and an Application template. The controller creates one Argo CD Application per destination from the BindingPolicy/Binding resolution.
+- **Application template** — Defines project, source (repo, path, revision), and optional sync policy. Destination (server/name) is set per cluster by the controller.
+
+## Basic Usage
+
+### 1. Create a BindingPolicy
+
+Define which clusters and workload objects to bind (see [KubeStellar docs](https://kubestellar.io)).
+
+### 2. Create an ArgoCDBinding
+
+Reference the BindingPolicy and set the Application template:
+
+```yaml
+apiVersion: integrations.kubestellar.io/v1alpha1
+kind: ArgoCDBinding
+metadata:
+  name: my-app-argocd
+spec:
+  bindingPolicyRef:
+    name: my-binding-policy
+  applicationTemplate:
+    project: default
+    source:
+      repoURL: https://github.com/org/repo
+      path: apps/myapp
+      targetRevision: main
+    destination:
+      namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+```
+
+### 3. Verify
+
+List Argo CD Applications; you should see one per destination cluster, with the correct destination server/name.
+
+## Advanced
+
+- Use multiple ArgoCDBindings for different BindingPolicies or different Application templates.
+- Adjust sync policy (manual vs automated, prune, selfHeal) per ArgoCDBinding.
+
+## Next Steps
+
+- [Troubleshooting](/integrations/argocd/troubleshooting)
+- [Examples](/integrations/argocd/examples)

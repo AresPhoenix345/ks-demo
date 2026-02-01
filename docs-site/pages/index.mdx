@@ -1,0 +1,47 @@
+# KubeStellar Integrations Demo
+
+Production-ready integrations for multi-cluster Kubernetes orchestration with KubeStellar.
+
+**LFX Mentorship Project**: CNCF - KubeStellar: Integration and ecosystem development specialist (2026 Term 1)
+
+## Featured Integrations
+
+### ArgoCD Integration
+
+Deploy applications across multiple clusters using GitOps. The ArgoCD integration connects KubeStellar BindingPolicies to Argo CD Applications—one Application per destination cluster.
+
+- [Installation](/integrations/argocd/installation)
+- [User Guide](/integrations/argocd/user-guide)
+- [Examples](/integrations/argocd/examples)
+
+### Terraform Integration
+
+Manage KubeStellar BindingPolicies as Terraform resources. Use Infrastructure as Code to define cluster-workload bindings.
+
+- [Installation](/integrations/terraform/installation)
+- [User Guide](/integrations/terraform/user-guide)
+- [Examples](/integrations/terraform/examples)
+
+## Quick Start
+
+```bash
+# Install KubeStellar
+bash <(curl -s https://raw.githubusercontent.com/kubestellar/kubestellar/main/scripts/install.sh)
+
+# Clone ks-demo and install integrations
+git clone https://github.com/kubestellar/ks-demo.git
+cd ks-demo
+./scripts/install-integrations.sh
+```
+
+## Why These Integrations?
+
+- **Production-Ready** — Designed for real multi-cluster workflows
+- **Well-Documented** — Setup guides, architecture, and troubleshooting
+- **Community-Driven** — Built as part of the CNCF LFX Mentorship Program
+
+## Next Steps
+
+- [Getting Started](/getting-started) — Prerequisites and installation
+- [API Reference](/api-reference) — Integration APIs overview
+- [Community](/community) — Slack, mailing lists, and contributing

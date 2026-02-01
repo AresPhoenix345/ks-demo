@@ -1,0 +1,47 @@
+# Terraform Integration — Installation
+
+## Prerequisites
+
+- Terraform 1.x
+- Go 1.21+ (if building from source)
+- KubeStellar WDS reachable (kubeconfig or in-cluster)
+
+## Install the provider
+
+### Option 1: Build from source
+
+```bash
+cd ks-demo/integrations/terraform
+go build -o terraform-provider-kubestellar
+# Move to Terraform plugin directory or use dev overrides
+```
+
+### Option 2: Terraform Registry (when published)
+
+```hcl
+terraform {
+  required_providers {
+    kubestellar = {
+      source  = "kubestellar/kubestellar"
+      version = "~> 0.1"
+    }
+  }
+}
+```
+
+Then `terraform init`.
+
+## Configure the provider
+
+```hcl
+provider "kubestellar" {
+  kubeconfig = "/path/to/kubeconfig"  # or leave empty for default/in-cluster
+}
+```
+
+Or set `KUBECONFIG` in the environment.
+
+## Next Steps
+
+- [User Guide](/integrations/terraform/user-guide)
+- [Examples](/integrations/terraform/examples)

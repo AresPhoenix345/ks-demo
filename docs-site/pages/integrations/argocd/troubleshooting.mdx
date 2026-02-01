@@ -1,0 +1,21 @@
+# ArgoCD Integration — Troubleshooting
+
+## Controller not starting
+
+- **Check CRD**: `kubectl get crd argocdbindings.integrations.kubestellar.io`
+- **Check RBAC**: ServiceAccount, Role, RoleBinding for the controller namespace.
+- **Check logs**: `kubectl logs -n kubestellar-system -l app=argocd-integration-controller`
+
+## Applications not created
+
+- **BindingPolicy exists**: `kubectl get bindingpolicy <name>`
+- **Binding resolved**: Check that a Binding exists for the BindingPolicy and has non-empty `spec.destinations`.
+- **ArgoCDBinding spec**: Ensure `bindingPolicyRef.name` matches the BindingPolicy name.
+
+## Wrong destination on Application
+
+- Controller maps each destination from Binding (or cluster list) to Argo CD Application `destination.server` or `destination.name`. Check cluster inventory (e.g. OCM ManagedCluster) and controller logic.
+
+## Sync failures in Argo CD
+
+- Use Argo CD UI or CLI to inspect Application sync status and events. The integration only creates/updates Application resources; sync is handled by Argo CD.

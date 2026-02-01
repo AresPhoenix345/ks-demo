@@ -1,0 +1,37 @@
+# Terraform Integration — User Guide
+
+## Concepts
+
+- **Provider** — Connects to KubeStellar WDS using kubeconfig (or in-cluster config).
+- **Resource** — `kubestellar_binding_policy` maps to a KubeStellar BindingPolicy (cluster selectors, downsync clauses).
+
+## Basic usage
+
+```hcl
+resource "kubestellar_binding_policy" "example" {
+  name = "my-policy"
+
+  cluster_selectors {
+    match_labels = {
+      env = "prod"
+    }
+  }
+
+  # downsync clauses (schema TBD in full implementation)
+}
+```
+
+Then:
+
+```bash
+terraform plan
+terraform apply
+```
+
+## State
+
+Terraform state holds the resource ID (e.g. BindingPolicy name). Drift can be detected by re-running `terraform plan` after changes outside Terraform.
+
+## Next Steps
+
+- [Examples](/integrations/terraform/examples)

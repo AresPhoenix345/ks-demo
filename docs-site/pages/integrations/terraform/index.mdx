@@ -1,0 +1,22 @@
+# Terraform Integration
+
+The Terraform integration lets you manage KubeStellar BindingPolicies as Terraform resources. Use Infrastructure as Code to define which workload objects go to which clusters.
+
+## Features
+
+- **Resource**: `kubestellar_binding_policy` — Create, read, update, and delete BindingPolicies.
+- **Provider config**: Kubeconfig path (or in-cluster) for the KubeStellar WDS API.
+- **Optional**: Data source for cluster list (e.g. from OCM).
+
+## Quick Start
+
+1. Install the provider (see [Installation](/integrations/terraform/installation)).
+2. Configure the provider with kubeconfig (or env).
+3. Define a `kubestellar_binding_policy` resource in your Terraform configuration.
+4. `terraform apply` to create/update the BindingPolicy in KubeStellar.
+
+## Documentation
+
+- [Installation](/integrations/terraform/installation)
+- [User Guide](/integrations/terraform/user-guide)
+- [Examples](/integrations/terraform/examples)

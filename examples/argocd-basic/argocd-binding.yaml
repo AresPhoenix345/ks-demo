@@ -1,0 +1,21 @@
+# ArgoCDBinding — references the BindingPolicy above and defines the Argo CD Application template.
+# The controller creates one Argo CD Application per destination from the resolved Binding.
+apiVersion: integrations.kubestellar.io/v1alpha1
+kind: ArgoCDBinding
+metadata:
+  name: example-argocd-binding
+spec:
+  bindingPolicyRef:
+    name: example-binding-policy
+  applicationTemplate:
+    project: default
+    source:
+      repoURL: https://github.com/kubestellar/ks-demo
+      path: examples/argocd-basic
+      targetRevision: main
+    destination:
+      namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

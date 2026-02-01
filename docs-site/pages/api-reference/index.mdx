@@ -1,0 +1,27 @@
+# API Reference
+
+High-level overview of the integration APIs. For full CRD schemas, see the repository.
+
+## ArgoCD Integration API
+
+**Group**: `integrations.kubestellar.io`  
+**Version**: `v1alpha1`
+
+### ArgoCDBinding
+
+Custom resource that binds a KubeStellar BindingPolicy to Argo CD Applications.
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `spec.bindingPolicyRef` | LocalObjectReference | Reference to BindingPolicy (name required). |
+| `spec.applicationTemplate` | ApplicationTemplate | Project, source (repo/path/revision), optional destination. |
+| `spec.syncPolicy` | SyncPolicy | Optional automated prune/selfHeal. |
+| `status.conditions` | []Condition | Standard conditions. |
+| `status.applicationCount` | int32 | Number of Applications created/updated. |
+
+## Terraform Provider
+
+- **Resource**: `kubestellar_binding_policy` — Maps to KubeStellar BindingPolicy.
+- **Provider config**: `kubeconfig` (optional) — Path to kubeconfig for WDS.
+
+For full schema, see the Terraform provider documentation in the repo.

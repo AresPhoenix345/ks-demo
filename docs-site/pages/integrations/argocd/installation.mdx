@@ -1,0 +1,49 @@
+# ArgoCD Integration — Installation
+
+## Prerequisites
+
+- KubeStellar v0.27.x or higher
+- Argo CD v2.9+ installed (in the same or a reachable cluster)
+- kubectl configured to access your clusters
+- Helm 3.x (optional)
+
+## Method 1: kubectl
+
+```bash
+# From ks-demo repo root
+cd ks-demo
+
+# Install CRDs
+kubectl apply -f integrations/argocd/config/crd/bases/
+
+# Install RBAC
+kubectl apply -f integrations/argocd/config/rbac/
+
+# Deploy controller
+kubectl apply -f integrations/argocd/deploy/kustomize/
+```
+
+## Method 2: Helm (when chart is available)
+
+```bash
+helm repo add kubestellar-integrations https://kubestellar.github.io/ks-demo/charts
+helm install argocd-integration kubestellar-integrations/kubestellar-argocd
+```
+
+## Verification
+
+```bash
+# Check CRD
+kubectl get crd argocdbindings.integrations.kubestellar.io
+
+# Check controller
+kubectl get pods -n kubestellar-system -l app=argocd-integration-controller
+
+# Logs
+kubectl logs -n kubestellar-system -l app=argocd-integration-controller --tail=50
+```
+
+## Next Steps
+
+- [User Guide](/integrations/argocd/user-guide)
+- [Examples](/integrations/argocd/examples)

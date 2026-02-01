@@ -1,0 +1,20 @@
+# Terraform Integration — Examples
+
+## Simple BindingPolicy
+
+See `examples/terraform-simple/` in the repository for a minimal `main.tf` that creates one `kubestellar_binding_policy` resource.
+
+Run:
+
+```bash
+cd examples/terraform-simple
+terraform init
+terraform plan
+terraform apply
+```
+
+Verify in cluster:
+
+```bash
+kubectl get bindingpolicies.control.kubestellar.io
+```

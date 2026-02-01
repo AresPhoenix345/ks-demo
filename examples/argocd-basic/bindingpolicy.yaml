@@ -1,0 +1,16 @@
+# Sample KubeStellar BindingPolicy — adjust clusterSelectors and downsync to your environment.
+# Clusters must exist in the inventory (e.g. OCM ManagedClusters) and match the selectors.
+apiVersion: control.kubestellar.io/v1alpha1
+kind: BindingPolicy
+metadata:
+  name: example-binding-policy
+spec:
+  clusterSelectors:
+    - matchLabels:
+        env: demo
+  downsync:
+    - objectSelectors:
+        - matchLabels:
+            app: myapp
+      namespaces:
+        - "*"

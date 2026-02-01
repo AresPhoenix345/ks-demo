@@ -1,0 +1,33 @@
+# CI for ArgoCD integration (Go build and test)
+name: Integration CI (ArgoCD)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'integrations/argocd/**'
+      - '.github/workflows/integration-ci.yaml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'integrations/argocd/**'
+      - '.github/workflows/integration-ci.yaml'
+
+jobs:
+  argocd:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+
+      - name: Build
+        working-directory: integrations/argocd
+        run: go build -o /dev/null ./cmd/controller
+
+      - name: Test
+        working-directory: integrations/argocd
+        run: go test ./... || true

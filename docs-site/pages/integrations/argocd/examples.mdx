@@ -1,0 +1,21 @@
+# ArgoCD Integration — Examples
+
+## Basic example
+
+See `examples/argocd-basic/` in the repository:
+
+- `bindingpolicy.yaml` — KubeStellar BindingPolicy (cluster selectors + downsync).
+- `argocd-binding.yaml` — ArgoCDBinding referencing the BindingPolicy and Application template.
+
+Apply in order:
+
+```bash
+kubectl apply -f examples/argocd-basic/bindingpolicy.yaml
+kubectl apply -f examples/argocd-basic/argocd-binding.yaml
+```
+
+Then list Argo CD Applications; one per destination cluster should appear.
+
+## Multi-cluster example
+
+Use a BindingPolicy with multiple cluster selectors (or multiple clusters matching one selector). One ArgoCDBinding still produces one Application per destination. See `examples/argocd-multi-cluster/` when available.

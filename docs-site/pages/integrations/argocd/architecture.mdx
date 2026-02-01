@@ -1,0 +1,35 @@
+# ArgoCD Integration — Architecture
+
+## Overview
+
+```
+KubeStellar WDS (BindingPolicy, Binding)
+         │
+         ▼
+ArgoCD Integration Controller
+  - Watches ArgoCDBinding
+  - Reads BindingPolicy / Binding from KubeStellar
+  - For each destination: create/update Argo CD Application
+         │
+         ▼
+Argo CD (Application CRs, one per cluster)
+```
+
+## Components
+
+- **ArgoCDBinding CRD** — Custom resource in `integrations.kubestellar.io/v1alpha1`.
+- **Controller** — Reconciles ArgoCDBinding; uses KubeStellar client for BindingPolicy/Binding and Argo CD client (or dynamic client) for Application CRs.
+- **RBAC** — ServiceAccount, Role, RoleBinding for the controller to read BindingPolicy/Binding and create/update/delete Applications.
+
+## Data Flow
+
+1. User creates/updates ArgoCDBinding (bindingPolicyRef + applicationTemplate).
+2. Controller fetches the referenced BindingPolicy and the resolved Binding (or resolves clusters from BindingPolicy + OCM).
+3. For each destination in Binding.Spec.Destinations (or derived list), controller creates or updates an Argo CD Application with:
+   - Same source and sync policy from the template
+   - Destination set to that cluster (server or name from cluster inventory).
+4. Argo CD syncs each Application to its destination cluster.
+
+## Next Steps
+
+- [Troubleshooting](/integrations/argocd/troubleshooting)

@@ -1,0 +1,25 @@
+# ArgoCD Integration
+
+The ArgoCD integration connects KubeStellar BindingPolicies to Argo CD. For each destination in a BindingPolicy (or resolved Binding), the controller creates or updates an Argo CD Application so that GitOps sync applies to the right clusters.
+
+## Features
+
+- **BindingPolicy → Applications** — One Argo CD Application per destination cluster
+- **Template-based** — Define source (repo, path, revision) and sync policy once; controller fills in destination per cluster
+- **Status** — Optional sync status from Argo CD back to ArgoCDBinding
+
+## Quick Start
+
+1. Install KubeStellar and Argo CD.
+2. Install the ArgoCD integration CRD and controller (see [Installation](/integrations/argocd/installation)).
+3. Create a BindingPolicy that selects your clusters and workload objects.
+4. Create an ArgoCDBinding that references the BindingPolicy and defines the Application template.
+5. The controller creates/updates Argo CD Applications for each destination.
+
+## Documentation
+
+- [Installation](/integrations/argocd/installation)
+- [User Guide](/integrations/argocd/user-guide)
+- [Architecture](/integrations/argocd/architecture)
+- [Troubleshooting](/integrations/argocd/troubleshooting)
+- [Examples](/integrations/argocd/examples)

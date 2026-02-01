@@ -1,0 +1,49 @@
+# Getting Started
+
+This guide walks you through prerequisites and installation for the KubeStellar integrations demo.
+
+## Prerequisites
+
+- **KubeStellar** — v0.27.x or higher (see [KubeStellar installation](https://kubestellar.io))
+- **kubectl** — Configured to access your clusters
+- **Helm 3.x** — Optional, for Helm-based installation
+- **Node.js 18+** — For running the documentation site locally
+
+## Install KubeStellar
+
+If you don't have KubeStellar installed:
+
+```bash
+bash <(curl -s https://raw.githubusercontent.com/kubestellar/kubestellar/main/scripts/install.sh)
+```
+
+Verify:
+
+```bash
+kubectl get bindingpolicies.control.kubestellar.io
+```
+
+## Install Integrations
+
+From the ks-demo repository root:
+
+```bash
+git clone https://github.com/kubestellar/ks-demo.git
+cd ks-demo
+./scripts/install-integrations.sh
+```
+
+## Run the Documentation Site Locally
+
+```bash
+cd docs-site
+npm install
+npm run dev
+```
+
+Visit [http://localhost:3000](http://localhost:3000).
+
+## Next Steps
+
+- [ArgoCD Integration](/integrations/argocd) — GitOps multi-cluster deployment
+- [Terraform Integration](/integrations/terraform) — IaC for BindingPolicies
