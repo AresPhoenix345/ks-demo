@@ -1,0 +1,31 @@
+# GitHub Actions — Examples
+
+## Card Config
+
+```json
+{
+  "owner": "kubestellar",
+  "repo": "console"
+}
+```
+
+## Example Workflow for Multi-Cluster Deploy
+
+```yaml
+name: Deploy to Clusters
+on:
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy
+        run: |
+          # Your deploy logic
+          echo "Deploying to clusters..."
+```
+
+## Trigger from Console
+
+The Workflow Trigger card can call `workflow_dispatch` with optional inputs when the user clicks "Run".

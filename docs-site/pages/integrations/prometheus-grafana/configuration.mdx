@@ -1,0 +1,32 @@
+# Prometheus + Grafana — Configuration
+
+## Environment Variables
+
+Add to your Console `.env`:
+
+```bash
+PROMETHEUS_URL=http://localhost:9090
+GRAFANA_URL=http://localhost:3000
+GRAFANA_API_KEY=your_grafana_api_key
+```
+
+## Grafana API Key
+
+1. Log in to Grafana
+2. Configuration → API Keys → New API Key
+3. Role: Viewer (or Admin for full access)
+4. Copy the key to `GRAFANA_API_KEY`
+
+## Merge Integration Code
+
+From kss-demo:
+
+```bash
+# Copy integration packages into console
+cp -r kss-demo/console-integrations/pkg/integrations console/pkg/
+
+# Copy React cards
+cp kss-demo/web-cards/*.tsx console/web/src/components/cards/
+```
+
+Then add API handlers and register the new card types (see [console-integrations/README.md](https://github.com/kubestellar/kss-demo/blob/main/console-integrations/README.md)).

@@ -1,90 +1,95 @@
-# KubeStellar Integrations Demo
+# KubeStellar Console Integrations
 
-Production-ready integrations for KubeStellar multi-cluster orchestration.
+Production-ready integrations for the **KubeStellar Console** — an AI-powered multi-cluster Kubernetes dashboard.
 
 **LFX Mentorship Project**: CNCF - KubeStellar: Integration and ecosystem development specialist (2026 Term 1)
 
-## Project Overview
+## Overview
 
-This project demonstrates two production-ready integrations for KubeStellar:
+This project adds two major integrations to KubeStellar Console:
 
-1. **ArgoCD Integration** — GitOps-based multi-cluster deployments using BindingPolicy and Argo CD Applications.
-2. **Terraform Integration** — Manage KubeStellar BindingPolicies as Terraform resources (IaC).
+1. **Prometheus/Grafana** — Historical metrics, alerts, embedded dashboards
+2. **GitHub Actions** — CI/CD pipeline visibility, workflow triggers
 
-Built as part of the CNCF LFX Mentorship Program 2026 Term 1.
+## What is KubeStellar Console?
+
+KubeStellar Console (kc) is a proactive dashboard that:
+
+- Adapts to your workflow using AI
+- Shows multi-cluster Kubernetes data in real-time
+- Auto-swaps dashboard cards based on your focus
+
+[Learn more →](https://github.com/kubestellar/console)
 
 ## Quick Start
 
 ### Prerequisites
 
-- Docker Desktop or similar
-- kubectl 1.29+
-- Helm 3.x
-- Node.js 18+
+- KubeStellar Console installed
+- Prometheus + Grafana (for metrics integration)
+- GitHub Personal Access Token (for GitHub integration)
 
-### Install KubeStellar
-
-```bash
-bash <(curl -s https://raw.githubusercontent.com/kubestellar/kubestellar/main/scripts/install.sh)
-```
-
-### Install Integrations
+### Installation
 
 ```bash
+# 1. Clone Console (if not already)
+git clone https://github.com/kubestellar/console.git
+cd console
+./scripts/prod.sh
+
+# 2. Clone kss-demo and install integrations
 git clone https://github.com/kubestellar/kss-demo.git
 cd kss-demo
-./scripts/install-integrations.sh
+./scripts/install-console-integrations.sh
 ```
 
-### Run Documentation Site Locally
+Set `CONSOLE_DIR` if your Console is elsewhere:
 
 ```bash
-cd docs-site
-npm install
-npm run dev
+CONSOLE_DIR=/path/to/console ./scripts/install-console-integrations.sh
 ```
 
-Visit http://localhost:3000
+### Configure Integrations
+
+Add to Console `.env`:
+
+```bash
+PROMETHEUS_URL=http://localhost:9090
+GRAFANA_URL=http://localhost:3000
+GRAFANA_API_KEY=your_grafana_api_key
+GITHUB_TOKEN=ghp_xxxxxxxx
+```
+
+### Using the Integrations
+
+1. Open Console at http://localhost:5174
+2. Sign in with GitHub
+3. Add Card → Prometheus Metrics, Grafana Dashboard, or GitHub Workflows
+4. Configure each card (metric, dashboard UID, owner/repo)
 
 ## Documentation
 
-Full documentation is available in the docs-site (and when deployed at the Netlify URL):
+Full documentation: [https://kss-demo.netlify.app](https://kss-demo.netlify.app) (when deployed)
 
-- [Getting Started](docs-site/pages/getting-started/index.mdx)
-- [ArgoCD Integration](docs-site/pages/integrations/argocd/index.mdx)
-- [Terraform Integration](docs-site/pages/integrations/terraform/index.mdx)
-- [API Reference](docs-site/pages/api-reference/index.mdx)
+- [Console Installation](docs-site/pages/getting-started/console-installation.mdx)
+- [Prometheus/Grafana Integration](docs-site/pages/integrations/prometheus-grafana/index.mdx)
+- [GitHub Actions Integration](docs-site/pages/integrations/github-actions/index.mdx)
 
 ## Project Structure
 
 ```
 kss-demo/
-├── integrations/        # Integration implementations (ArgoCD, Terraform)
-├── docs-site/           # Nextra documentation website (Netlify-deployable)
-├── examples/            # Sample configurations
-├── scripts/             # Automation scripts
-└── tests/               # Test suites
+├── console-integrations/   # Go packages (Prometheus, Grafana, GitHub)
+├── web-cards/             # React dashboard cards
+├── docs-site/             # Nextra documentation (Netlify)
+├── examples/              # Example configurations
+├── integrations/          # Legacy: ArgoCD, Terraform (standalone)
+└── scripts/               # Installation scripts
 ```
-
-## Testing
-
-```bash
-# Run integration tests (from repo root)
-make -C integrations/argocd test
-```
-
-## Deployment
-
-The documentation site is configured for Netlify:
-
-- **Build**: `docs-site` base, `npm run build`, publish `.next`
-- **Preview**: Deploy previews per PR
-
-See [DEPLOYMENT.md](DEPLOYMENT.md) for details.
 
 ## Contributing
 
-Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) if present, or open an issue/PR in the repository.
+Contributions welcome. Open an issue or PR in the repository.
 
 ## License
 
@@ -93,5 +98,5 @@ Apache License 2.0
 ## Acknowledgments
 
 - CNCF LFX Mentorship Program
-- KubeStellar maintainers and community
+- KubeStellar maintainers and Console contributors
 - Mentors: Rishi Mondal, Andy Anderson, Shivam Kumar, Naman Jain, Onkar Shelke

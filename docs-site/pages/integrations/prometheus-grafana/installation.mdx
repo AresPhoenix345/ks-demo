@@ -1,0 +1,44 @@
+# Prometheus + Grafana — Installation
+
+## Option 1: Helm (Kubernetes)
+
+```bash
+# Prometheus stack
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm install prometheus prometheus-community/kube-prometheus-stack
+
+# Grafana (often included in kube-prometheus-stack)
+# Or standalone:
+helm repo add grafana https://grafana.github.io/helm-charts
+helm install grafana grafana/grafana
+```
+
+## Option 2: Docker Compose (Local)
+
+```yaml
+# docker-compose.yml
+version: '3'
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+```
+
+## Verify
+
+- Prometheus: http://localhost:9090
+- Grafana: http://localhost:3000 (admin/admin)
+
+## Next Steps
+
+- [Configure in Console](/integrations/prometheus-grafana/configuration)

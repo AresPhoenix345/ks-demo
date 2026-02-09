@@ -1,37 +1,28 @@
 # Getting Started
 
-This guide walks you through prerequisites and installation for the KubeStellar integrations demo.
+This guide walks you through installing KubeStellar Console and its integrations.
 
 ## Prerequisites
 
-- **KubeStellar** — v0.27.x or higher (see [KubeStellar installation](https://kubestellar.io))
-- **kubectl** — Configured to access your clusters
-- **Helm 3.x** — Optional, for Helm-based installation
-- **Node.js 18+** — For running the documentation site locally
+- **Go 1.23+** — For Console backend
+- **Node.js 20+** — For Console frontend
+- **GitHub OAuth App** — For authentication
+- **Docker** (optional) — For Prometheus/Grafana
 
-## Install KubeStellar
+## Install KubeStellar Console
 
-If you don't have KubeStellar installed:
+1. [Console Installation](/getting-started/console-installation) — Clone, configure, run
+2. Install MCP plugins: kubestellar-ops, kubestellar-deploy
 
-```bash
-bash <(curl -s https://raw.githubusercontent.com/kubestellar/kubestellar/main/scripts/install.sh)
-```
-
-Verify:
-
-```bash
-kubectl get bindingpolicies.control.kubestellar.io
-```
-
-## Install Integrations
-
-From the kss-demo repository root:
+## Install Integrations (kss-demo)
 
 ```bash
 git clone https://github.com/kubestellar/kss-demo.git
 cd kss-demo
-./scripts/install-integrations.sh
+./scripts/install-console-integrations.sh
 ```
+
+This merges integration packages and cards into your Console fork.
 
 ## Run the Documentation Site Locally
 
@@ -45,5 +36,5 @@ Visit [http://localhost:3000](http://localhost:3000).
 
 ## Next Steps
 
-- [ArgoCD Integration](/integrations/argocd) — GitOps multi-cluster deployment
-- [Terraform Integration](/integrations/terraform) — IaC for BindingPolicies
+- [Prometheus/Grafana Integration](/integrations/prometheus-grafana) — Observability cards
+- [GitHub Actions Integration](/integrations/github-actions) — CI/CD cards

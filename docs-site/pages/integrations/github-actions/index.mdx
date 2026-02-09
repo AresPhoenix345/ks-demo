@@ -1,0 +1,33 @@
+# GitHub Actions Integration
+
+View CI/CD pipeline status and trigger workflows from KubeStellar Console.
+
+## Features
+
+- **GitHub Workflows Card** — Show running/recent workflows
+- **Deployment Pipeline Card** — Visualize multi-cluster deploy pipeline
+- **Workflow Trigger Card** — Trigger workflow_dispatch from Console
+
+## Architecture
+
+```
+Console Frontend (React)
+        │
+        ▼
+Console Backend (Go)
+        │
+        ├──► GitHub API (Actions: list runs, dispatch)
+        └──► Webhook endpoint (optional, for real-time updates)
+```
+
+## Quick Start
+
+1. [Installation](/integrations/github-actions/installation)
+2. [Webhook Setup](/integrations/github-actions/webhook-setup) (optional)
+3. Add GitHub Workflows card to your dashboard
+
+## Documentation
+
+- [Installation](/integrations/github-actions/installation)
+- [Webhook Setup](/integrations/github-actions/webhook-setup)
+- [Examples](/integrations/github-actions/examples)

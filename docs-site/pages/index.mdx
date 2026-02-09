@@ -1,47 +1,75 @@
-# KubeStellar Integrations Demo
+# KubeStellar Console Integrations
 
-Production-ready integrations for multi-cluster Kubernetes orchestration with KubeStellar.
+Enhance your multi-cluster Kubernetes management with production-ready integrations for the **KubeStellar Console** — an AI-powered, adaptive dashboard.
 
 **LFX Mentorship Project**: CNCF - KubeStellar: Integration and ecosystem development specialist (2026 Term 1)
 
-## Featured Integrations
+## What is KubeStellar Console?
 
-### ArgoCD Integration
+KubeStellar Console (kc) is a proactive, AI-powered multi-cluster Kubernetes dashboard that:
 
-Deploy applications across multiple clusters using GitOps. The ArgoCD integration connects KubeStellar BindingPolicies to Argo CD Applications—one Application per destination cluster.
+- **Adapts to how you work** using Claude AI to observe usage patterns
+- **Auto-swaps dashboard cards** based on your current focus
+- **Streams real-time events** via WebSocket from multiple clusters
+- **Uses MCP servers** (kubestellar-ops, kubestellar-deploy) to fetch cluster data
 
-- [Installation](/integrations/argocd/installation)
-- [User Guide](/integrations/argocd/user-guide)
-- [Examples](/integrations/argocd/examples)
+[Learn more about Console →](https://github.com/kubestellar/console)
 
-### Terraform Integration
+## Available Integrations
 
-Manage KubeStellar BindingPolicies as Terraform resources. Use Infrastructure as Code to define cluster-workload bindings.
+### Prometheus + Grafana
 
-- [Installation](/integrations/terraform/installation)
-- [User Guide](/integrations/terraform/user-guide)
-- [Examples](/integrations/terraform/examples)
+Historical metrics, alerts, and embedded Grafana dashboards alongside Console's real-time data.
+
+- [Installation](/integrations/prometheus-grafana/installation)
+- [Configuration](/integrations/prometheus-grafana/configuration)
+- [Examples](/integrations/prometheus-grafana/examples)
+
+### GitHub Actions
+
+CI/CD pipeline visibility and workflow triggers directly in the Console dashboard.
+
+- [Installation](/integrations/github-actions/installation)
+- [Webhook Setup](/integrations/github-actions/webhook-setup)
+- [Examples](/integrations/github-actions/examples)
 
 ## Quick Start
 
 ```bash
-# Install KubeStellar
-bash <(curl -s https://raw.githubusercontent.com/kubestellar/kubestellar/main/scripts/install.sh)
+# 1. Install KubeStellar Console
+git clone https://github.com/kubestellar/console.git
+cd console
+./scripts/prod.sh
 
-# Clone kss-demo and install integrations
+# 2. Clone kss-demo (integrations)
 git clone https://github.com/kubestellar/kss-demo.git
 cd kss-demo
-./scripts/install-integrations.sh
+
+# 3. Install integrations (merge into your console fork)
+./scripts/install-console-integrations.sh
+
+# 4. Configure integrations in Console .env
+# PROMETHEUS_URL=http://localhost:9090
+# GRAFANA_URL=http://localhost:3000
+# GITHUB_TOKEN=ghp_xxx
 ```
 
-## Why These Integrations?
+[Full installation guide →](/getting-started/console-installation)
 
-- **Production-Ready** — Designed for real multi-cluster workflows
-- **Well-Documented** — Setup guides, architecture, and troubleshooting
-- **Community-Driven** — Built as part of the CNCF LFX Mentorship Program
+## Project Structure
+
+```
+kss-demo/
+├── console-integrations/   # Go packages (Prometheus, Grafana, GitHub)
+├── web-cards/             # React dashboard cards
+├── docs-site/             # This documentation (Netlify)
+├── examples/              # Example configurations
+└── scripts/               # Installation scripts
+```
 
 ## Next Steps
 
-- [Getting Started](/getting-started) — Prerequisites and installation
-- [API Reference](/api-reference) — Integration APIs overview
-- [Community](/community) — Slack, mailing lists, and contributing
+- [Console Installation](/getting-started/console-installation)
+- [Prometheus/Grafana Integration](/integrations/prometheus-grafana)
+- [GitHub Actions Integration](/integrations/github-actions)
+- [Community](/community)

@@ -1,0 +1,20 @@
+# Example GitHub Actions workflow for multi-cluster deploy
+# Trigger from Console Workflow Trigger card
+
+name: Deploy to Clusters
+on:
+  workflow_dispatch:
+    inputs:
+      cluster:
+        description: 'Target cluster (optional)'
+        required: false
+        default: 'all'
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy
+        run: |
+          echo "Deploying to cluster: ${{ github.event.inputs.cluster }}"
+          # Add your kubectl/helm deploy logic here

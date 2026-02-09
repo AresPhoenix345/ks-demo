@@ -1,0 +1,62 @@
+# Console Installation
+
+Install KubeStellar Console before adding integrations.
+
+## Prerequisites
+
+- Go 1.23+
+- Node.js 20+
+- GitHub OAuth App (for authentication)
+- [Claude Code](https://claude.ai/claude-code) CLI + kubestellar-ops, kubestellar-deploy plugins
+
+## Install Console
+
+```bash
+git clone https://github.com/kubestellar/console.git
+cd console
+```
+
+## Create GitHub OAuth App
+
+1. GitHub → Settings → Developer settings → OAuth Apps → New OAuth App
+2. **Homepage URL**: `http://localhost:5174`
+3. **Callback URL**: `http://localhost:8080/auth/github/callback`
+
+## Configure Environment
+
+Create `.env` in the console root:
+
+```bash
+GITHUB_CLIENT_ID=your_client_id
+GITHUB_CLIENT_SECRET=your_client_secret
+DEV_MODE=false
+FRONTEND_URL=http://localhost:5174
+```
+
+## Run Console
+
+```bash
+./scripts/prod.sh
+```
+
+- Frontend: http://localhost:5174
+- Backend: http://localhost:8080
+
+## Install MCP Plugins
+
+```bash
+claude plugins install kubestellar-ops
+claude plugins install kubestellar-deploy
+```
+
+Or via Homebrew:
+
+```bash
+brew tap kubestellar/tap
+brew install kubestellar-ops kubestellar-deploy
+```
+
+## Next Steps
+
+- [Add Prometheus/Grafana integration](/integrations/prometheus-grafana/installation)
+- [Add GitHub Actions integration](/integrations/github-actions/installation)

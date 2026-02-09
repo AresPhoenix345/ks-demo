@@ -1,0 +1,21 @@
+# GitHub Actions — Webhook Setup
+
+Subscribe to workflow events for real-time updates in Console.
+
+## Create Webhook
+
+1. GitHub repo → Settings → Webhooks → Add webhook
+2. **Payload URL**: `https://your-console-domain/api/integrations/github/webhook`
+3. **Content type**: application/json
+4. **Secret**: Generate with `openssl rand -hex 32`
+5. **Events**: Workflow runs
+
+## Configure in Console
+
+```bash
+GITHUB_WEBHOOK_SECRET=your_webhook_secret
+```
+
+## Backend Handler
+
+The webhook handler receives `workflow_run` events and broadcasts to WebSocket clients so the Workflows card updates in real time.

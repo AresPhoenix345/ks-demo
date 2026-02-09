@@ -1,0 +1,34 @@
+# Prometheus + Grafana Integration
+
+Add historical metrics, alerts, and embedded Grafana dashboards to KubeStellar Console.
+
+## Features
+
+- **Prometheus Metrics Card** — Query PromQL and display metrics (CPU, memory, latency)
+- **Grafana Dashboard Card** — Embed Grafana dashboards in Console
+- **Alert Rules Card** — Show active Prometheus alerts from AlertManager
+
+## Architecture
+
+```
+Console Frontend (React)
+        │
+        ▼
+Console Backend (Go)
+        │
+        ├──► Prometheus API (query, query_range)
+        ├──► AlertManager API (alerts)
+        └──► Grafana API (dashboards, embed URLs)
+```
+
+## Quick Start
+
+1. [Install Prometheus and Grafana](/integrations/prometheus-grafana/installation)
+2. [Configure in Console](/integrations/prometheus-grafana/configuration)
+3. Add cards to your dashboard: Prometheus Metrics, Grafana Dashboard
+
+## Documentation
+
+- [Installation](/integrations/prometheus-grafana/installation)
+- [Configuration](/integrations/prometheus-grafana/configuration)
+- [Examples](/integrations/prometheus-grafana/examples)
